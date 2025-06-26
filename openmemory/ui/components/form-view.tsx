@@ -208,7 +208,7 @@ export function FormView({ settings, onChange }: FormViewProps) {
                 <Input
                   id="llm-api-key"
                   type={showLlmApiKey ? "text" : "password"}
-                  placeholder="env:API_KEY"
+                  placeholder="env:OPENAI_API_KEY"
                   value={settings.mem0?.llm?.config?.api_key || ""}
                   onChange={(e) => handleLlmConfigChange("api_key", e.target.value)}
                 />
@@ -223,7 +223,7 @@ export function FormView({ settings, onChange }: FormViewProps) {
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground mt-1">
-                Use "env:API_KEY" to load from environment variable, or enter directly
+                Use "env:OPENAI_API_KEY" to load from environment variable, or enter directly
               </p>
             </div>
           )}
@@ -322,7 +322,7 @@ export function FormView({ settings, onChange }: FormViewProps) {
                 <Input
                   id="embedder-api-key"
                   type={showEmbedderApiKey ? "text" : "password"}
-                  placeholder="env:API_KEY"
+                  placeholder="env:OPENAI_API_KEY"
                   value={settings.mem0?.embedder?.config?.api_key || ""}
                   onChange={(e) => handleEmbedderConfigChange("api_key", e.target.value)}
                 />
@@ -337,7 +337,7 @@ export function FormView({ settings, onChange }: FormViewProps) {
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground mt-1">
-                Use "env:API_KEY" to load from environment variable, or enter directly
+                Use "env:OPENAI_API_KEY" to load from environment variable, or enter directly
               </p>
             </div>
           )}

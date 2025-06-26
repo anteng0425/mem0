@@ -14,7 +14,7 @@ class LLMConfig(BaseModel):
     model: str = Field(..., description="LLM model name")
     temperature: float = Field(..., description="Temperature setting for the model")
     max_tokens: int = Field(..., description="Maximum tokens to generate")
-    api_key: Optional[str] = Field(None, description="API key or 'env:API_KEY' to use environment variable")
+    api_key: Optional[str] = Field(None, description="API key or 'env:OPENAI_API_KEY' to use environment variable")
     ollama_base_url: Optional[str] = Field(None, description="Base URL for Ollama server (e.g., http://host.docker.internal:11434)")
 
 class LLMProvider(BaseModel):
@@ -23,7 +23,7 @@ class LLMProvider(BaseModel):
 
 class EmbedderConfig(BaseModel):
     model: str = Field(..., description="Embedder model name")
-    api_key: Optional[str] = Field(None, description="API key or 'env:API_KEY' to use environment variable")
+    api_key: Optional[str] = Field(None, description="API key or 'env:OPENAI_API_KEY' to use environment variable")
     ollama_base_url: Optional[str] = Field(None, description="Base URL for Ollama server (e.g., http://host.docker.internal:11434)")
 
 class EmbedderProvider(BaseModel):
