@@ -40,7 +40,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 COPY --chown=nextjs:nodejs entrypoint.sh /home/nextjs/entrypoint.sh
-RUN chmod +x /home/nextjs/entrypoint.sh
+# Ensure Linux line endings even if the source was checked out on Windows
+RUN sed -i 's/\r$//' /home/nextjs/entrypoint.sh && \
+    chmod +x /home/nextjs/entrypoint.sh
 
 USER nextjs
 
@@ -48,5 +50,5 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-ENTRYPOINT ["/home/nextjs/entrypoint.sh"]
+ENTRYPOINT ["sh", "/home/nextjs/entrypoint.sh"]
 CMD ["node", "server.js"]
