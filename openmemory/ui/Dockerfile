@@ -48,5 +48,5 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-ENTRYPOINT ["/home/nextjs/entrypoint.sh"]
+ENTRYPOINT ["sh", "/home/nextjs/entrypoint.sh"]
 CMD ["node", "server.js"]

@@ -76,7 +76,15 @@ NEXT_PUBLIC_USER_ID=<user-id> # Same as the user id for environment variable in 
 ```
 
 ### 2. Build and Run the Project
-You can run the project using the following two commands:
+Before building, ensure you have copied the `.env.example` files and updated
+`api/.env` with your **OPENAI_API_KEY**. You can do this quickly with:
+
+```bash
+make env
+# then edit api/.env and set OPENAI_API_KEY
+```
+
+After the environment files are in place, build and run the project using:
 ```bash
 make build # builds the mcp server and ui
 make up  # runs openmemory mcp server and ui
