@@ -66,7 +66,14 @@ You can do this in one of the following ways:
 
 ```env
 OPENAI_API_KEY=sk-xxx
-USER=<user-id> # The User Id you want to associate the memories with 
+USER=<user-id> # The User Id you want to associate the memories with
+```
+If `USER` is not set in your environment (common on Windows), the
+Makefile falls back to your login name and automatically strips any
+domain prefix (e.g. `ANTONIOPC\yourname`). You can still override the
+value manually before running the commands:
+```bash
+export USER=<user-id>
 ```
 - #### Example `/ui/.env`
 
@@ -112,7 +119,7 @@ Use the following one step command to configure OpenMemory Local MCP to a client
 npx @openmemory/install local http://localhost:8765/mcp/<client-name>/sse/<user-id> --client <client-name>
 ```
 
-Replace `<client-name>` with the desired client name and `<user-id>` with the value specified in your environment variables.
+Replace `<client-name>` with the desired client name and `<user-id>` with the value specified in your environment variables (typically the value of `USER`). Omitting the `<user-id>` will result in a `404` error when connecting.
 
 
 ## Project Structure
