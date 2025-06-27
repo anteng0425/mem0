@@ -68,6 +68,7 @@ You can do this in one of the following ways:
 OPENAI_API_KEY=sk-xxx
 USER=<user-id> # The User Id you want to associate the memories with
 ```
+
 If `USER` is not set in your environment (common on Windows), the
 Makefile falls back to your login name and automatically strips any
 domain prefix (e.g. `ANTONIOPC\yourname`). You can still override the

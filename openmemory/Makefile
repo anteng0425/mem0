@@ -1,6 +1,8 @@
 .PHONY: help up down logs shell migrate test test-clean env ui-install ui-start ui-dev ui-build ui-dev-start
 
+
 USER ?= $(shell whoami | sed 's/.*\\//')
+
 NEXT_PUBLIC_USER_ID ?= $(USER)
 NEXT_PUBLIC_API_URL ?= http://localhost:8765
 
@@ -25,10 +27,10 @@ env:
 	cd ui && cp .env.example .env
 
 build:
-	docker compose build
+    USER=$(USER) docker compose build
 
 up:
-	NEXT_PUBLIC_USER_ID=$(USER) NEXT_PUBLIC_API_URL=$(NEXT_PUBLIC_API_URL) docker compose up
+    USER=$(USER) NEXT_PUBLIC_USER_ID=$(USER) NEXT_PUBLIC_API_URL=$(NEXT_PUBLIC_API_URL) docker compose up
 
 down:
 	docker compose down -v
