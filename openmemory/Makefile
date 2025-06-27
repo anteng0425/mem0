@@ -1,7 +1,8 @@
 .PHONY: help up down logs shell migrate test test-clean env ui-install ui-start ui-dev ui-build ui-dev-start
 
-NEXT_PUBLIC_USER_ID=$(USER)
-NEXT_PUBLIC_API_URL=http://localhost:8765
+USER ?= $(shell whoami)
+NEXT_PUBLIC_USER_ID ?= $(USER)
+NEXT_PUBLIC_API_URL ?= http://localhost:8765
 
 # Default target
 help:
@@ -24,10 +25,10 @@ env:
 	cd ui && cp .env.example .env
 
 build:
-	docker compose build
+    USER=$(USER) docker compose build
 
 up:
-	NEXT_PUBLIC_USER_ID=$(USER) NEXT_PUBLIC_API_URL=$(NEXT_PUBLIC_API_URL) docker compose up
+    USER=$(USER) NEXT_PUBLIC_USER_ID=$(USER) NEXT_PUBLIC_API_URL=$(NEXT_PUBLIC_API_URL) docker compose up
 
 down:
 	docker compose down -v

@@ -66,7 +66,13 @@ You can do this in one of the following ways:
 
 ```env
 OPENAI_API_KEY=sk-xxx
-USER=<user-id> # The User Id you want to associate the memories with 
+USER=<user-id> # The User Id you want to associate the memories with
+```
+If `USER` is not set in your environment (common on Windows), it will
+default to your current login name. You can set it manually before
+running the commands:
+```bash
+export USER=<user-id>
 ```
 - #### Example `/ui/.env`
 
@@ -76,7 +82,15 @@ NEXT_PUBLIC_USER_ID=<user-id> # Same as the user id for environment variable in 
 ```
 
 ### 2. Build and Run the Project
-You can run the project using the following two commands:
+Before building, ensure you have copied the `.env.example` files and updated
+`api/.env` with your **OPENAI_API_KEY**. You can do this quickly with:
+
+```bash
+make env
+# then edit api/.env and set OPENAI_API_KEY
+```
+
+After the environment files are in place, build and run the project using:
 ```bash
 make build # builds the mcp server and ui
 make up  # runs openmemory mcp server and ui
@@ -104,7 +118,7 @@ Use the following one step command to configure OpenMemory Local MCP to a client
 npx @openmemory/install local http://localhost:8765/mcp/<client-name>/sse/<user-id> --client <client-name>
 ```
 
-Replace `<client-name>` with the desired client name and `<user-id>` with the value specified in your environment variables.
+Replace `<client-name>` with the desired client name and `<user-id>` with the value specified in your environment variables (typically the value of `USER`). Omitting the `<user-id>` will result in a `404` error when connecting.
 
 
 ## Project Structure
