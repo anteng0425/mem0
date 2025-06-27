@@ -68,9 +68,11 @@ You can do this in one of the following ways:
 OPENAI_API_KEY=sk-xxx
 USER=<user-id> # The User Id you want to associate the memories with
 ```
-If `USER` is not set in your environment (common on Windows), it will
-default to your current login name. You can set it manually before
-running the commands:
+
+If `USER` is not set in your environment (common on Windows), the
+Makefile falls back to your login name and automatically strips any
+domain prefix (e.g. `ANTONIOPC\yourname`). You can still override the
+value manually before running the commands:
 ```bash
 export USER=<user-id>
 ```

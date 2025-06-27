@@ -1,6 +1,8 @@
 .PHONY: help up down logs shell migrate test test-clean env ui-install ui-start ui-dev ui-build ui-dev-start
 
-USER ?= $(shell whoami)
+
+USER ?= $(shell whoami | sed 's/.*\\//')
+
 NEXT_PUBLIC_USER_ID ?= $(USER)
 NEXT_PUBLIC_API_URL ?= http://localhost:8765
 
